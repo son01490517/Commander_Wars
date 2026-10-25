@@ -1,0 +1,18 @@
+{
+  "threshold_checks": {
+    "long_enough": {"field": "seconds_run", "op": ">=", "value": 3600},
+    "growth_ok": {"field": "rss_growth_mb_per_hour", "op": "<=", "value": 50}
+  },
+  "questions": {
+    "turn_stats_present": {
+      "type": "noul",
+      "instructions": "Do the receipts include ai-turns.csv with at least 30 turns and summary.json fields ai_turn_p50_s, ai_turn_max_s and estimated_device_turn_max_s?",
+      "criteria": {"true": "All turn statistics are present.", "false": "Missing or too few turns."}
+    },
+    "default_unchanged": {
+      "type": "noul",
+      "instructions": "Without the new -r option, does measure-ram.sh behave exactly as before (same scenario, same outputs)?",
+      "criteria": {"true": "Default behavior unchanged.", "false": "Default behavior changed."}
+    }
+  }
+}

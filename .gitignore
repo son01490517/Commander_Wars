@@ -39,3 +39,6 @@ CMakeLists.txt.user
 /distribution/logs
 /distribution/savegames
 .qtcreator/CMakeLists.txt.user.PLSVdO
+
+# handheld port measurement receipts
+.handheld/

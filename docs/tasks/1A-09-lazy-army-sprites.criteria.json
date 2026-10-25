@@ -1,0 +1,13 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true},
+    "days_progressed": {"field": "max_day_reached", "op": ">=", "value": 3}
+  },
+  "questions": {
+    "data_driven": {
+      "type": "noul",
+      "instructions": "Is the set of lazily loaded ids derived from the inventory CSV by a script (not a hand-written guess list)?",
+      "criteria": {"true": "Derived from the inventory by a script.", "false": "Hand-written or unexplained."}
+    }
+  }
+}

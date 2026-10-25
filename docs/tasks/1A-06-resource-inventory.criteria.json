@@ -1,0 +1,19 @@
+{
+  "questions": {
+    "inventory_complete": {
+      "type": "noul",
+      "instructions": "Does the evidence show a resource inventory CSV covering every resource manager, with a class for every row and a per-class MB summary?",
+      "criteria": {"true": "Inventory and summary are complete.", "false": "Rows, managers or the summary are missing."}
+    },
+    "safe_default": {
+      "type": "noul",
+      "instructions": "Are rows that Jev answered unknown or needs_review assigned the class 'always' (never a class that would stop them from loading)?",
+      "criteria": {"true": "The safe default is applied.", "false": "Uncertain rows may be excluded from loading."}
+    },
+    "dump_guarded": {
+      "type": "noul",
+      "instructions": "Is the inventory dump compiled only in HANDHELD_BUILD and active only when CW_RES_INVENTORY is set?",
+      "criteria": {"true": "Guarded by both.", "false": "Not guarded."}
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "guarded_by_handheld": {
+    "type": "choice",
+    "instructions": "Look at every behavior change in the diff (C++, CMake, JS, XML). Is each one either compiled only under the HANDHELD_BUILD flag, or controlled by a setting whose default keeps the previous desktop behavior? Docs, tools/handheld scripts and docs/tasks files never need a guard.",
+    "criteria": {
+      "guarded": "Every behavior change is guarded or keeps the desktop default.",
+      "unguarded": "At least one behavior change alters desktop builds without a guard; name the file.",
+      "not_applicable": "The diff only touches docs, tools/handheld or docs/tasks.",
+      "unknown": "The diff is truncated or missing, so this cannot be judged."
+    }
+  },
+  "out_of_scope_edits": {
+    "type": "noul",
+    "instructions": "Compare the files changed in the diff with the card's 'Files to modify' and 'Out of scope' sections. Does the diff modify a file the card does not allow, or do work the card lists as out of scope? Updating the card's own status/handoff section, docs/tasks/README.md and .handheld receipts is always allowed.",
+    "criteria": {
+      "true": "The diff edits a disallowed file or does out-of-scope work.",
+      "false": "All edits are within the card's allowed scope."
+    }
+  },
+  "weakens_checks": {
+    "type": "noul",
+    "instructions": "Does the diff weaken a test, measurement script, threshold, acceptance criterion or Jev criteria file so that the card passes more easily (for example lowering a RAM target, shortening a measurement, deleting an assertion)?",
+    "criteria": {
+      "true": "The supplied evidence shows a check was weakened.",
+      "false": "No check was weakened."
+    }
+  },
+  "receipts_valid": {
+    "type": "choice",
+    "instructions": "Judge the command receipts supplied in state.receipts. For RAM receipts (summary.json) a valid run has reached_game=true, final_phase='game', seconds_run equal to seconds_requested, and a map no larger than 30x30 with 2 players; a run with menu_only=true is valid when the card asks for a menu-only run (then reached_game=false is expected). For build/test receipts, a valid receipt shows the command finished successfully (for example BUILD_OK) for the current code (git_rev matches the reviewed change or is marked -dirty while uncommitted).",
+    "criteria": {
+      "valid": "All receipts the card requires are present and satisfy the rules above.",
+      "invalid": "A receipt is present but shows a failed, aborted, too short or wrong-scenario run.",
+      "missing": "A receipt required by the card's Verification section is absent."
+    }
+  },
+  "desktop_regression_risk": {
+    "type": "score",
+    "instructions": "How likely is it that this diff breaks the existing desktop game (Windows/Linux/macOS builds without HANDHELD_BUILD), including replay, movement planner, map editor and multiplayer?",
+    "criteria": [
+      "No plausible desktop impact in the supplied evidence.",
+      "A localized risk that should be checked manually.",
+      "A clear desktop behavior change or likely crash."
+    ]
+  },
+  "leaks_secrets": {
+    "type": "noul",
+    "instructions": "Does the diff add credentials, API keys, tokens, passwords, personal settings files (*.ini from a user profile) or personal absolute paths such as /Users/<name>/? state.secret_scan holds the result of a regex scan of the added lines for key/token patterns.",
+    "criteria": {
+      "true": "The diff adds secret or personal data.",
+      "false": "No secret or personal data is added."
+    }
+  }
+}

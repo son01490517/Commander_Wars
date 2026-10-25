@@ -1,0 +1,13 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true},
+    "days_progressed": {"field": "max_day_reached", "op": ">=", "value": 3}
+  },
+  "questions": {
+    "lookup_textures_excluded": {
+      "type": "noul",
+      "instructions": "Are color-table / shader lookup textures and images with semi-transparent pixels kept in RGBA8888?",
+      "criteria": {"true": "They are excluded from 5551.", "false": "They may be converted."}
+    }
+  }
+}

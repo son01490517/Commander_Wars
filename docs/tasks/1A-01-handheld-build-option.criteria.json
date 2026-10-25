@@ -1,0 +1,17 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "desktop_defaults_unchanged": {
+      "type": "noul",
+      "instructions": "In coreengine/settings.cpp, do the desktop (non-HANDHELD_BUILD) default values of BattleAnimationMode, CaptureAnimation and ZoomModifier remain exactly as before the diff, and is the MSAA sample count still 2 for desktop builds?",
+      "criteria": {"true": "Desktop defaults are unchanged.", "false": "A desktop default changed."}
+    },
+    "zoom_one_x": {
+      "type": "noul",
+      "instructions": "Does the diff make a newly loaded map start at scale 1.0 in handheld builds (instead of 1 * ZoomModifier), while desktop keeps the old behavior?",
+      "criteria": {"true": "Handheld starts at 1x and desktop is unchanged.", "false": "Not established by the diff."}
+    }
+  }
+}

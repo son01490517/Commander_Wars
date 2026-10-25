@@ -1,0 +1,14 @@
+{
+  "questions": {
+    "enough_screens": {
+      "type": "noul",
+      "instructions": "Do index.txt / listing.txt show at least 12 distinct screen captures (PNG files of plausible non-trivial size, e.g. > 5 KB)?",
+      "criteria": {"true": "At least 12 captures are listed.", "false": "Fewer than 12, or the listing is missing."}
+    },
+    "no_game_source_changes": {
+      "type": "noul",
+      "instructions": "Does the diff leave all game sources untouched (only tools/ and docs/ change)?",
+      "criteria": {"true": "Only tools/docs changed.", "false": "Game sources changed."}
+    }
+  }
+}

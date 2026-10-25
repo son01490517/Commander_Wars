@@ -1,0 +1,17 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "callback_non_blocking": {
+      "type": "noul",
+      "instructions": "Does the PortAudio callback path (paCallback/mixMusic) avoid locks, allocations and decoding, reading only from a ring buffer and outputting silence on underrun?",
+      "criteria": {"true": "The callback is non-blocking.", "false": "The callback may block, allocate or decode."}
+    },
+    "audio_really_tested": {
+      "type": "noul",
+      "instructions": "Do the receipts show that music was actually decoded through the new streaming path (log lines or a smoke-test output), rather than audio being silently disabled?",
+      "criteria": {"true": "Streaming decode is evidenced.", "false": "No evidence the streaming path ran."}
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "all_converted": {
+      "type": "noul",
+      "instructions": "Do the receipts (identify.txt / count.txt) show 65 background JPGs at exactly 640x480?",
+      "criteria": {"true": "65 files at 640x480 are shown.", "false": "Count or size differs, or the receipt is missing."}
+    },
+    "originals_untouched": {
+      "type": "noul",
+      "instructions": "Does the diff leave every file under resources/ unchanged (output only goes to .handheld/overlay)?",
+      "criteria": {"true": "resources/ is untouched.", "false": "Files in resources/ were changed."}
+    }
+  }
+}

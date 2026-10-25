@@ -1,0 +1,18 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true},
+    "days_progressed": {"field": "max_day_reached", "op": ">=", "value": 3}
+  },
+  "questions": {
+    "recolor_path_safe": {
+      "type": "noul",
+      "instructions": "Do COSpriteManager::loadResAnim / CO::loadResAnim still get a valid base image when the base sprite is lazily loaded (load is triggered before recoloring)?",
+      "criteria": {"true": "Recoloring triggers the lazy load first.", "false": "Recoloring may run on an unloaded image."}
+    },
+    "unload_on_main_menu": {
+      "type": "noul",
+      "instructions": "Are large CO sprites and their recolor caches unloaded when the main menu is entered (handheld only)?",
+      "criteria": {"true": "Unloaded on main menu entry.", "false": "Not unloaded."}
+    }
+  }
+}

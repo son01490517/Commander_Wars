@@ -1,0 +1,17 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "anims_on_still_works": {
+      "type": "noul",
+      "instructions": "Is there a receipt for a run with battle animations enabled that reached the game without Critical/Fatal errors?",
+      "criteria": {"true": "Such a receipt exists and is clean.", "false": "Missing, or it shows errors."}
+    },
+    "scripts_still_loaded": {
+      "type": "noul",
+      "instructions": "Does the diff keep the JS loadAll() of BattleAnimationManager (only textures become lazy)?",
+      "criteria": {"true": "Scripts are still loaded.", "false": "Script loading was removed or skipped."}
+    }
+  }
+}

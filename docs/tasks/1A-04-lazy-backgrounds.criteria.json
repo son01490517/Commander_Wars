@@ -1,0 +1,22 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "bounded_residency": {
+      "type": "noul",
+      "instructions": "Does the new code keep at most a small fixed number (≤2) of decoded background images and free older ones?",
+      "criteria": {"true": "Residency is bounded and old ones are freed.", "false": "Backgrounds can accumulate or residency is not bounded."}
+    },
+    "callers_unchanged_or_justified": {
+      "type": "noul",
+      "instructions": "Are background callers (createdgui.cpp, backgroundSelector.js, loadingscreen.cpp, gamemenue.cpp) either unchanged or changed only under HANDHELD_BUILD with a clear reason?",
+      "criteria": {"true": "Callers are unchanged or changes are guarded and justified.", "false": "Callers changed for desktop or without reason."}
+    },
+    "menu_ram_drop": {
+      "type": "choice",
+      "instructions": "Does menu_rss_mb in the 1A-04 receipt drop by at least 150 MB compared with the 1A-03-ram entry in state.ram_history_all_cards?",
+      "criteria": {"yes": "Drop ≥ 150 MB.", "no": "Drop < 150 MB.", "unknown": "The 1A-03-ram entry is missing."}
+    }
+  }
+}

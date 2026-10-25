@@ -1,0 +1,15 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true}
+  },
+  "questions": {
+    "no_game_source_changes": {
+      "type": "noul",
+      "instructions": "Does the diff leave every game source file untouched (C++, CMake files of the game, resources/, menue/, game/, coreengine/, 3rd_party/)? Files under tools/, docs/ and .gitignore do not count as game sources.",
+      "criteria": {
+        "true": "No game source file is modified.",
+        "false": "At least one game source file is modified."
+      }
+    }
+  }
+}

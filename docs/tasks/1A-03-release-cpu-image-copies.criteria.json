@@ -1,0 +1,28 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true},
+    "days_progressed": {"field": "max_day_reached", "op": ">=", "value": 3}
+  },
+  "questions": {
+    "release_after_frames": {
+      "type": "noul",
+      "instructions": "Does the diff release the texture's CPU image only after every AnimationFrame using that texture has built its hit-test data (i.e. not inside Texture::init before frames exist)?",
+      "criteria": {"true": "Release happens after frames/hit masks are built.", "false": "Release can happen before frames are built, or this is not established."}
+    },
+    "safe_fallback": {
+      "type": "noul",
+      "instructions": "If AnimationFrame::updateHittestdata runs on a texture whose image was released, does the new code avoid reading a null QImage (fallback instead of crash)?",
+      "criteria": {"true": "A safe fallback exists.", "false": "A null image could be read."}
+    },
+    "size_cached": {
+      "type": "noul",
+      "instructions": "Do Texture::getWidth/getHeight keep returning the correct size after the image is released (size cached before release)?",
+      "criteria": {"true": "Width/height are cached.", "false": "Width/height would become 0 after release."}
+    },
+    "ram_drop": {
+      "type": "choice",
+      "instructions": "Compare peak_rss_mb in the 1A-03 RAM receipt with the 1A-01-ram entry in state.ram_history_all_cards. Is the drop at least 300 MB?",
+      "criteria": {"yes": "Drop ≥ 300 MB is shown.", "no": "Drop < 300 MB.", "unknown": "The 1A-01-ram entry is missing."}
+    }
+  }
+}

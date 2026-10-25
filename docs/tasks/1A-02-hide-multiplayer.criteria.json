@@ -1,0 +1,9 @@
+{
+  "questions": {
+    "network_code_untouched": {
+      "type": "noul",
+      "instructions": "Does the diff leave all files under network/ and multiplayer/ and Mainwindow::enterMultiplayer unchanged?",
+      "criteria": {"true": "Network code is untouched.", "false": "Network code was changed."}
+    }
+  }
+}

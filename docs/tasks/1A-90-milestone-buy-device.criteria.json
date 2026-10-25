@@ -1,0 +1,18 @@
+{
+  "threshold_checks": {
+    "reached_game": {"field": "reached_game", "op": "==", "value": true},
+    "peak_target": {"field": "peak_rss_mb", "op": "<=", "value": 700}
+  },
+  "questions": {
+    "two_maps_measured": {
+      "type": "noul",
+      "instructions": "Are there two fresh RAM receipts (1A-90-ram and 1A-90-ram2) on two different 2-player maps of at most 30x30, both on the current revision?",
+      "criteria": {"true": "Two valid receipts on different maps.", "false": "Missing, same map, or stale revision."}
+    },
+    "soak_reported": {
+      "type": "noul",
+      "instructions": "Does the Result or state.ram_history_all_cards include the 1A-12 soak result with RAM growth per hour ≤ 50 MB?",
+      "criteria": {"true": "Soak result is present and within the limit.", "false": "Missing or above the limit."}
+    }
+  }
+}
