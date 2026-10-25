@@ -5,6 +5,10 @@ Claude…) đọc chính xác. Cột "Tóm tắt" ghi bằng tiếng Việt.
 
 ## How to work a card (rules for every AI)
 
+The user only needs to type the card ID (for example `1A-03`). `AGENTS.md` at the repo root (also loaded via
+`CLAUDE.md` / `GEMINI.md`) tells every agent to open this README and the card by itself.
+
+
 1. Work cards **in order**, on branch `handheld`. Check that every card listed in *Depends on* is `Done`.
 2. Read **only** what the card's *Read list* names, plus files you modify. Stay within ~100k tokens of
    context (hard limit 200k). If the card cannot fit, stop and mark it `Blocked – Opus` with that reason.
